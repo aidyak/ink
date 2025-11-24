@@ -44,10 +44,16 @@ jobs:
       - name: Build Next.js app
         run: pnpm run build
 
+      - name: Prepare Pages artifact
+        run: |
+          rm -rf docs
+          cp -R out docs
+          touch docs/.nojekyll
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out
+          path: ./docs
 
   deploy:
     runs-on: ubuntu-latest
