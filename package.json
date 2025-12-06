@@ -10,9 +10,12 @@
     "format": "biome format --write"
   },
   "dependencies": {
+    "gray-matter": "^4.0.3",
+    "grey-matter": "^0.0.0",
     "next": "16.0.3",
     "react": "19.2.0",
-    "react-dom": "19.2.0"
+    "react-dom": "19.2.0",
+    "react-markdown": "^10.1.0"
   },
   "devDependencies": {
     "@biomejs/biome": "2.2.0",
