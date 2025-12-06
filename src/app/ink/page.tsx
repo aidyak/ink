@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Link from "next/link";
+import { posts } from "@/content/posts";
 
 export default function Home() {
   return (
@@ -13,6 +15,30 @@ export default function Home() {
             1頁ずつを大事に、書を形成していきたいと思います。
           </p>
         </div>
+
+        {/* Posts Section */}
+        <section className="mt-12 w-full">
+          <h2 className="mb-4 text-xl font-semibold text-black dark:text-zinc-50">
+            コンテンツ
+          </h2>
+          <ul className="space-y-3">
+            {posts.map((p) => (
+              <li key={p.slug} className="flex items-center justify-between">
+                <Link
+                  href={`/${p.slug}`}
+                  className="text-blue-600 hover:underline dark:text-blue-400"
+                >
+                  {p.title}
+                </Link>
+                {p.description ? (
+                  <span className="text-sm text-zinc-600 dark:text-zinc-400">
+                    {p.description}
+                  </span>
+                ) : null}
+              </li>
+            ))}
+          </ul>
+        </section>
       </main>
     </div>
   );
