@@ -1,4 +1,4 @@
-name: OXC Lint
+name: oxc Lint
 
 on:
   push:

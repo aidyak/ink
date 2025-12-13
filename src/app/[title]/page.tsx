@@ -92,13 +92,31 @@ export default async function PostPage({
               {children}
             </blockquote>
           ),
-          code: ({ children }) => (
-            <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 text-sm font-mono">
-              {children}
-            </code>
-          ),
+          code: ({ children, className }) => {
+            const isInline = !className;
+            if (isInline) {
+              return (
+                <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 text-sm font-mono text-zinc-700 dark:text-zinc-300">
+                  {children}
+                </code>
+              );
+            }
+            const lang = className?.replace("language-", "") ?? "";
+            return (
+              <div className="relative">
+                {lang && (
+                  <span className="absolute top-0 right-0 px-2 py-1 text-xs text-zinc-500 dark:text-zinc-400 bg-zinc-200 dark:bg-zinc-700 rounded-bl rounded-tr-lg">
+                    {lang}
+                  </span>
+                )}
+                <code className="block font-mono text-zinc-700 dark:text-zinc-300">
+                  {children}
+                </code>
+              </div>
+            );
+          },
           pre: ({ children }) => (
-            <pre className="my-4 overflow-x-auto rounded-lg bg-zinc-900 p-4 text-sm">
+            <pre className="my-4 overflow-x-auto rounded-lg bg-zinc-100 dark:bg-zinc-800 p-4 text-sm border border-zinc-200 dark:border-zinc-700">
               {children}
             </pre>
           ),

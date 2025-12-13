@@ -11,7 +11,7 @@ date: "2025-05-21"
 `pages/posts/`配下に記事を書くようにして、フロントマターをそれぞれの記事に書きます。
 例えばこの記事でしたら
 
-```
+```markdown
 ---
 layout: ../../layouts/Post.astro
 author: "aidyak"
@@ -24,7 +24,7 @@ date: "2025-05-21"
 という感じにします。
 また、`layouts/Post.astro`もざっくりこんな感じにします。
 
-```
+```astro
 ---
 import "../styles/post.css";
 const { frontmatter } = Astro.props;
